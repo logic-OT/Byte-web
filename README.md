@@ -43,3 +43,6 @@ This package uses the following libraries.
   ## Limitations
 
 - Works flawlessly from phone-to-laptop communication but has a problem with phone-to-phone communication
+
+#Motivation
+I was heavily inspired to pursue this project after [Jerry Buaba](https://github.com/buabaj) told me about it. I  subsequently inspected his repo and fixed some issues with the demodulator and...voila, it works.
