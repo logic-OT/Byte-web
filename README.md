@@ -1,11 +1,5 @@
 # Byte-web
 
-
-
-
-
-
-# Generic-Naive-Bayes
 <b>This is the web implemenation of the byte framework</b> 
 
 ![](https://miro.medium.com/max/702/0*3_J7YH5beFVmpxBg.png)
