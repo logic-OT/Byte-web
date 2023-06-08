@@ -2,7 +2,8 @@
 
 <b>This is the web implemenation of the [byte framework](https://github.com/logic-OT/Byte/tree/update)</b> 
 
-![](https://miro.medium.com/max/702/0*3_J7YH5beFVmpxBg.png)
+![VID-20230608-WA0005_exported_25463](https://github.com/logic-OT/Byte-web/assets/61668807/13c7f2bc-64b8-4798-b9a0-17d9eced7e56)
+
 
 # Website
 See the implementation [here](http://bytenets.pythonanywhere.com/)
