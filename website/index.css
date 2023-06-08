@@ -1,0 +1,44 @@
+
+.msg-scroll{
+    overflow-y: scroll;
+    height: 150px;
+}
+.words {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem 2rem 1rem 5rem;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+    background-size: 100% 3rem;
+    position: relative;
+    line-height: 3rem;
+    caret-color: transparent;
+}
+
+.status {
+    max-width: 500px;
+    margin-right: auto;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    position: relative;
+    line-height: 3rem;
+    display: flex;
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    color: wheat;
+}
+
+p {
+    margin: 0 0 3rem;
+}
+
+.words:before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    top: 0;
+    left: 30px;
+    bottom: 0;
+    border: 1px solid;
+    border-color: transparent #efe4e4;
+}

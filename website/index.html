@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <style>
+    ::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    height: 5px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 6px;
+    border-radius: 10px;
+    background: #949494;
+    width: 6px; 
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+div.scrollmenu {
+    width:auto;
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: rgb(228, 228, 238);
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    color: rgb(80, 105, 151);
+}
+
+.hide{
+    display: none;
+}
+
+body{
+    background-color: rgb(250, 250, 250);
+}
+.mute {
+  display:block;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #dadadabb;
+  cursor: pointer;
+  color: #525252;
+}
+.listening{
+display: none;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #ebb000;
+  cursor: pointer;
+}
+.replay {
+  display: none;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #03af12;
+  cursor: pointer;
+}
+.record {
+  display: none;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: #dd2911;
+  cursor: pointer;
+}
+.pulse {
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(200, 200, 200, 0.4);
+  animation: pulse 0.5s infinite;
+}
+.pulse:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(162, 162, 162, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 40px rgba(242,117,121, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(242,117,121, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(166, 166, 166, 0.4);
+    box-shadow: 0 0 0 0 rgba(166, 166, 166, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 20px rgba(242,117,121, 0);
+      box-shadow: 0 0 0 20px rgba(242,117,121, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(242,117,121, 0);
+      box-shadow: 0 0 0 0 rgba(242,117,121, 0);
+  }
+}
+</style>
+
+    <body>	
+        <nav class="sticky-top">
+            <div class='scrollmenu bg-light text-dark  ' style="border-bottom: 0.5px solid;">
+                <h4 class='navbar-brand text-dark' style="float: left;">Receive Data</h4>
+                <a class="text-dark" href="https://Github.com/logic-ot"><i class="fab fa-github "></i> My Github</a></a>
+            </div>
+        </nav>
+        <div class="card card-body my-2">
+            <small class="text-muted" style="font-size:medium;">
+                1. Make sure you are within <b>1m</b> of the transmitting device
+            </small>
+        </div>
+        <div class="card py-4">
+            <h5 class="text-center font-weight-normal">Received Messages</h5>
+
+            <div class='msg-scroll'>
+              <div class="words blockquote font-weight-normal mt-3 border-bottom text-muted text-center" contentEditable>
+                No messages yet
+            </div>
+            </div>
+
+            <div class="status hide">Status:&ensp;
+                <div id="status" class="hide">waiting</div>
+            </div>
+        </div>
+        <div class="card card-body my-2">
+            <small id = 'info' class="text-center text-muted">Inactive </small>
+            <div class="mic-container">
+                <span class="pulse record my-4 pl-1 mx-auto " id="playing" style="font-size: x-large"><i class="fa fa-microphone text-light text-center mt-4 ml-4 pl-2 pt-2" ></i></span>
+                <span class="mute my-4 mx-auto pl-1" id="mute" style="font-size: x-large"><i class="fa fa-microphone text-center mt-4 ml-4 pl-2 pt-2" ></i></span>
+                <span onclick="" class="replay my-4 mx-auto " id='done' style="font-size: x-large"><i class="fa fa-thumbs-up text-light text-center mt-4 ml-4 pl-2 pt-2" ></i></span>
+                <span onclick="" class="listening my-4 mx-auto pl-1 pulse" id='listening' style="font-size: x-large"><i class="fa fa-microphone text-light text-center mt-4 ml-4 pl-2 pt-2" ></i></span>
+                <button id="receive" class="btn btn-md btn-success round mx-auto d-flex"> receive <i class="fas fa-download fa-beat mx-2 mt-1"></i></button>
+                <button id="stop" onclick="Halt()" class="btn btn-md btn-danger round mx-auto " style="display: none;"> stop <i class="fas fa-pause fa-beat mx-2 mt-1"></i></button>
+            </div>
+        </div>
+
+        <script>
+             halt=true
+            function Halt(){
+                halt=true
+                replay.classList.add('d-flex')
+                Stop.style.display='none'
+                replay.style.display = 'none'
+                Mute.style.display = 'block'
+                playing.style.display='none'
+                done.style.display='none'
+                listen.style.display='none'
+                info.innerText='stopped'
+            }
+        </script>
+<script src="volume-meter.js"></script>
+<script src="audioDetectionConfig.js"></script>
+<script src="audioDetection.js"></script>
+<script src="audioStream.js"></script>
+
+<script src="demoAudioRecorder.js"></script>
+<script src="demoAudioDetectionListeners.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

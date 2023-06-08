@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+  </head>
+  <style>
+    ::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    height: 5px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 6px;
+    border-radius: 10px;
+    background: #949494;
+    width: 6px; 
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+div.scrollmenu {
+    width:auto;
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: rgb(228, 228, 238);
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+    color: rgb(80, 105, 151);
+}
+
+.hide{
+    display: none;
+}
+
+body{
+    background-color: rgb(250, 250, 250);
+}
+.mute {
+  display:block;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #dadadabb;
+  cursor: pointer;
+  color: #525252;
+}
+
+.replay {
+  display: none;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #e9a803;
+  cursor: pointer;
+}
+.pulse {
+  display: none;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #27994f;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(34, 245, 83, 0.4);
+  animation: pulse 0.3s infinite;
+}
+.pulse:hover {
+  animation: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(34, 245, 83, 0.4);
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 40px rgba(242,117,121, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(242,117,121, 0);
+  }
+}
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(34, 245, 83, 0.4);
+    box-shadow: 0 0 0 0 rgba(34, 245, 83, 0.4);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 40px rgba(242,117,121, 0);
+      box-shadow: 0 0 0 40px rgba(242,117,121, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(242,117,121, 0);
+      box-shadow: 0 0 0 0 rgba(242,117,121, 0);
+  }
+}
+</style>
+
+    <body>	
+        <nav class="sticky-top">
+            <div class='scrollmenu bg-light text-dark  ' style="border-bottom: 0.5px solid;">
+                <h4 class='navbar-brand text-dark' style="float: left;">Transmit Data</h4>
+                <a class="text-dark" href='https://Github.com/logic-ot'><i class="fab fa-github "></i> My Github</a></a>
+            </div>
+        </nav>
+        <div class="card card-body my-2">
+            <small class="text-muted" style="font-size:medium;">
+                1. Make sure you are within <b>1m</b> of the transmitting device
+            </small>
+        </div>
+        <div class="card card-body my-2">
+            <h5 class="text-center font-weight-normal">Sent Messages</h5>
+            <div class="mx-auto p-2">
+                <textarea class= 'textarea form-control text-center' name="" id="messages" cols="32" rows="4"></textarea>
+            </div>
+        </div>
+        
+        <div class="card card-body my-2">
+            <small class="text-center text-muted">Increase volume to <h class="text-danger">highest</h> </small>
+            <div class="mic-container">
+                <span class="pulse my-4 mx-auto " id="playing" style="font-size: x-large"><i class="fa fa-volume-up text-light text-center mt-4 ml-4 pl-2 pt-2" ></i></span>
+                <span class="mute my-4 mx-auto" id="mute" style="font-size: x-large"><i class="fa fa-volume-mute text-center mt-4 ml-4 pl-2 pt-2" ></i></span>
+                <span onclick="Replay()" class="replay my-4 mx-auto " id='replay' style="font-size: x-large"><i class="fa fa-repeat text-light text-center mt-4 ml-4 pl-2 pt-2" ></i></span>
+    
+            </div>
+            
+            
+                <div class="d-flex">
+                        <input type="text" class="form-control mx-2" placeholder="Message to be sent..." id="text" required>
+                        <button onclick="encode()" class="btn btn-md btn-outline-success round d-flex"> send <i class="fas fa-wifi mx-2 mt-1"></i></button>
+                </div>
+            
+        </div>
+</html>
+    <audio src="" id="audio" class="hide" onpause="stop()" controls>
+    </audio>
+    <script>
+        sound = document.getElementById('audio')
+        function encode(){
+            //sendata
+                message = document.getElementById('text').value
+                mute = document.getElementById('mute')
+                playing = document.getElementById('playing')
+                replay=document.getElementById('replay')
+            if (message){
+                replay.style.display = 'none'
+                mute.style.display = 'none'
+                playing.style.display='block'
+                fetch('/encode/'+message,{method:"GET"}).then(function(response){
+                return response.blob() 
+            }).then(function(data){
+                document.getElementById('text').value = ''
+                url = window.URL.createObjectURL(data)
+                console.log(data)
+                sound.src=url
+                sound.play()
+
+                //console.log(data.result)
+                //document.getElementById('text1').value = data.result
+               
+            })
+            
+            }            
+        }
+        function stop(){
+                replay.style.display = 'block'
+                mute.style.display = 'none'
+                playing.style.display='none'
+                document.getElementById('messages').value += message + '\n'
+            }
+        function Replay(){
+                sound.play()
+                replay.style.display = 'none'
+                mute.style.display = 'none'
+                playing.style.display='block'
+            }
+
+
+    </script>
+</body>
