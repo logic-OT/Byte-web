@@ -21,12 +21,14 @@ This package uses the following libraries.
 * numpy
 * scipy
 * sounddevice
+* flask
+* flask_cors
 
 ## Installing and Executing program
 
 1. Clone repository
     ```
-    git clone git@github.com:logic-ot/Generic-Naive-Bayes.git
+    git clone git@github.com:logic-ot/Byte-web.git
     ```
 2. Installing Depedencies
     ```
@@ -34,29 +36,10 @@ This package uses the following libraries.
     myenv\scripts\activate    
     pip install -r requirements.txt
     ```
-3. Import the model
+3. Run flask
    ```
-   from generic_bayes import bayesian_classifier
+   flask --app app.py --debug run
    ```
-4. Instantiate the model and pass in your data. This automatcailly fits the training data to the model
-    ```
-    model = bayesian_classifier(X_train,Y_train)
-    ```
-5. Use the fitted model to predict a class using a sequence of features 
-    ```
-    model.predict(X_target.iloc[10])
-    ```
-### Example code
-    from generic_bayes import bayesian_classifier
-    import numpy as np
-
-    model = bayesian_classifier(np.array([[1,1],[2,1],[3,2]]), np.array([1,2,2]))
-
-    print(model.predict(np.array([1,1,1,1,1,3,1])))
-
-    OUTPUT: [1]
-
-    
   ## Limitations
 
-- Doesn't have a system to detect continuous data and throw an error
+- Works flawlessly from phone-to-laptop communication but has a problem with phone-to-phone communication
