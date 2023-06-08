@@ -16,8 +16,10 @@ Encoding and decoding was done with Frequency Shift Keying (FSK)
 
 ## Dependencies
 This package uses the following libraries.
-* Python 3.8
+* Python 3.9
 * numpy
+* scipy
+* sounddevice
 
 ## Installing and Executing program
 
