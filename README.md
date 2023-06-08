@@ -5,7 +5,7 @@
 ![](https://miro.medium.com/max/702/0*3_J7YH5beFVmpxBg.png)
 
 # Website
-See the implementation here[here](http://bytenets.pythonanywhere.com/)
+See the implementation [here](http://bytenets.pythonanywhere.com/)
 ## Description
 Byte is framework that faciliates data transmission via audible sound waves.
 
